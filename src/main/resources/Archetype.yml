@@ -1,0 +1,39 @@
+id: player
+name: The Player
+states:
+- name: idle
+  nextState: attack
+  frames:
+  - duration: 1
+    boxes: {}
+- name: attack
+  nextState: null
+  frames:
+  - duration: 21
+    boxes:
+      hit:
+      - {x: 2, y: 2, width: 28, height: 28}
+  - duration: 22
+    boxes: {}
+  - duration: 23
+    boxes: {}
+---
+id: enemy
+name: The Enemy
+states:
+- name: idle
+  nextState: attack
+  frames:
+  - duration: 5
+    boxes: {}
+- name: attack
+  nextState: null
+  frames:
+  - duration: 31
+    boxes:
+      hit:
+      - {x: 3, y: 3, width: 26, height: 26}
+  - duration: 32
+    boxes: {}
+  - duration: 33
+    boxes: {}
