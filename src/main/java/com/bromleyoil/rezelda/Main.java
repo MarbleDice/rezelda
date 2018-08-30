@@ -1,26 +1,26 @@
 package com.bromleyoil.rezelda;
 
-import static java.lang.System.*;
-
 import java.util.Arrays;
-
-import org.yaml.snakeyaml.Yaml;
 
 import com.bromleyoil.cog.model.Archetype;
 import com.bromleyoil.cog.model.Box;
 import com.bromleyoil.cog.model.Frame;
 import com.bromleyoil.cog.model.State;
+import com.bromleyoil.cog.persist.Handle;
 import com.bromleyoil.cog.persist.YamlPersistor;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Archetype arch = getArch();
-
-		out.println((new Yaml()).dump(arch));
 
 		YamlPersistor yaml = new YamlPersistor();
-		out.println(yaml.present(arch));
+		System.out.println(yaml.compose(Handle.of("Archetype.yml|player")));
+		yaml.construct(Handle.of("Archetype.yml|player"), Archetype.class);
+
+		// Archetype arch = getArch();
+		// out.println((new Yaml()).dump(arch));
+		// YamlPersistor yaml = new YamlPersistor();
+		// out.println(yaml.present(arch));
 	}
 
 	public static Archetype getArch() {
