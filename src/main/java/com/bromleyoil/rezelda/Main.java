@@ -1,5 +1,7 @@
 package com.bromleyoil.rezelda;
 
+import static java.lang.System.*;
+
 import java.util.Arrays;
 
 import com.bromleyoil.cog.model.Archetype;
@@ -8,19 +10,14 @@ import com.bromleyoil.cog.model.Frame;
 import com.bromleyoil.cog.model.State;
 import com.bromleyoil.cog.persist.Handle;
 import com.bromleyoil.cog.persist.YamlPersistor;
-
 public class Main {
 
 	public static void main(String[] args) {
 
-		YamlPersistor yaml = new YamlPersistor();
-		System.out.println(yaml.compose(Handle.of("Archetype.yml|player")));
-		yaml.construct(Handle.of("Archetype.yml|player"), Archetype.class);
-
-		// Archetype arch = getArch();
-		// out.println((new Yaml()).dump(arch));
-		// YamlPersistor yaml = new YamlPersistor();
-		// out.println(yaml.present(arch));
+		YamlPersistor persistor = new YamlPersistor();
+		out.println(persistor.compose(Handle.of("Archetype.yml|player")));
+		Archetype arch = persistor.construct(Handle.of("Archetype.yml|player"), Archetype.class);
+		out.println(YamlPersistor.present(arch));
 	}
 
 	public static Archetype getArch() {
